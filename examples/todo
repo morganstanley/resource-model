@@ -1,0 +1,107 @@
+# Resource schema file for todo
+name: todo # name of the resource which we are going to model
+description: This is for todo object
+# version of your api. Use 3.x.x for openapi spec 3.0
+version: 3.0.1
+# Schema of primary key to uniquely identify a resource
+key:
+  type: string
+# JsonSchema of the resource
+# Resource should be an object.
+# You should specify each property with property name
+# and its schema using jsonschema draft4.
+type: object
+properties:
+  address:
+    additionalProperties: false
+    properties:
+      line1:
+        type: string
+      line2:
+        type: string
+      state:
+        type: string
+      zip:
+        type: string
+    required:
+    - line1
+    - line2
+    - state
+    - zip
+    type: object
+  employees:
+    # Schema type to define complex property - list of objects/hashes
+    # This is similar to defining table schema for a resource. There will
+    # be multiple rows in the table. We need to define 'key' which is used
+    # to uniquely identify a row in the table.
+    type: propertylist
+    key:
+    - fname
+    - lname
+    items:
+      properties:
+        favorites:
+          type: propertylist
+          key:
+          - favname
+          items:
+            type: object
+            properties:
+              favname:
+                type: string
+              favtype:
+                type: string
+            required:
+            - favname
+            - favtype
+        fname:
+          type: string
+        lhost:
+          type: string
+        lname:
+          type: string
+        midname:
+          type: string
+      required:
+      - fname
+      - lname
+      - lhost
+      type: object
+    type: propertylist
+  tags:
+    items:
+      type: string
+    type: array
+  text:
+    type: string
+required:
+- text
+additionalProperties: false
+# Define rpc operations supported
+rpc:
+- start:
+    request: # schema of the request body
+      type: integer
+    response: # schema of the response
+      type: string
+- deploy:
+    request:
+      properties:
+        runtest:
+          type: boolean
+        servers:
+          type: string
+      type: object
+    response:
+      type: string
+# Refined search on "get all" operation
+# Provide a list of query parameters and its schema
+search:
+- name: findbystatus
+  schema:
+    type: string
+- name: findbyid
+  schema:
+    type: array
+    items:
+      type: string

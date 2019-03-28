@@ -1,0 +1,4 @@
+# vim:syntax=cfg
+
+[console_scripts]
+openapi_converter = resourcemodel.entrypoint:convert_to_openapispec
