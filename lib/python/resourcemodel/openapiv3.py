@@ -1269,7 +1269,6 @@ class VersionV3():
                                   tagname,
                                   parameters,
                                   objreqlist)
-        return
 
     def add_rpcverbs(self):
         """

@@ -18,7 +18,6 @@ class DummyTest(unittest.TestCase):
     def test_dummy(self):
         """Test nothing.
         """
-        pass
 
 
 if __name__ == '__main__':
