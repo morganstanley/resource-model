@@ -1,0 +1,57 @@
+# Resource schema file for an entitlement
+
+name: entitlement
+version: 3.0.0
+description: This represents an entitlement
+type: object
+key:
+    type: string
+properties:
+    servertype:
+        type: object
+        oneOf:
+            - allOf:
+                - oneOf:
+                    - type: string
+                    - type: integer
+                    - type: string
+                - type: string
+            - type: string
+            - type: string
+            - type: string
+        properties:
+            label:
+                type: array
+                items:
+                    type: string
+            labelid:
+                type: integer
+            archetype:
+                oneOf:
+                  - type: string
+            flavor:
+                type: string
+            cluster:
+                type: string
+            hostname:
+                type: string
+            environment:
+                type: string
+            location:
+                type: object
+                properties:
+                    ntype:
+                        enum:
+                            - organization
+                            - hub
+                            - continent
+                            - country
+                            - campus
+                            - city
+                            - building
+                            - room
+                            - bunker
+                            - rack
+                            - desk
+                    cname:
+                        type: string

@@ -1,0 +1,21 @@
+# An rpc only schema for the resource
+description: This is for infra lone
+rpconly: true
+name: infra
+version: 3.3.4
+rpc:
+- start:
+    request:
+      type: string
+    response:
+      type: string
+- deploy:
+    request:
+      type: object
+      properties:
+        runtest:
+          type: boolean
+        servers:
+          type: string
+    response:
+      type: string

@@ -1,0 +1,98 @@
+description: Foo bar baz
+name: zone
+version: 3.0.0
+key:
+  type: string
+type: object
+properties:
+  email:
+    type: string
+  expire_time:
+    type: integer
+  host:
+    type: string
+  minimum_ttl:
+    type: integer
+  refresh_time:
+    type: integer
+  retry_time:
+    type: integer
+  serial_number:
+    type: integer
+  ns_rrs:
+    key: [name]
+    type: propertylist
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        server_name:
+          type: array
+          items:
+            $ref: '#/definitions/srv_name'
+  a_rrs:
+    type: propertylist
+    key: [name]
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        ipv4_addresses:
+          type: array
+          items:
+            type: string
+  cname_rrs:
+    type: propertylist
+    key: [name]
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        canonical_name:
+          type: string
+  srv_rrs:
+    type: propertylist
+    key: [name]
+    items:
+      $ref: '#/definitions/srv_rr'
+  txt_rrs:
+    type: propertylist
+    key: [name]
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+        text:
+          type: array
+          items:
+            type: string
+definitions:
+   srv_name:
+     type: string
+   srv_rr:
+     type: object
+     properties:
+       name:
+         type: string
+       services:
+         $ref: '#/definitions/services'
+   services:
+     type: propertylist
+     key: [target]
+     items:
+       $ref: '#/definitions/service'
+   service:
+     type: object
+     properties:
+       priority:
+         type: integer
+       port:
+         type: integer
+       weight:
+         type: integer
+       target:
+         type: string
