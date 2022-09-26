@@ -1,7 +1,7 @@
 # Resource Model
 ## Description: This project can be used to create openapi 3.0 specification from a simple resource schema. Checkout the examples for sample resource schemas.
 
-[![Build Status](https://travis-ci.org/Morgan-Stanley/resource-model.svg?branch=master)](https://travis-ci.org/Morgan-Stanley/resource-model)
+![Lifecycle Archived](https://badgen.net/badge/Lifecycle/Archived/grey)
 
 # How to create an openapi spec
 create a base directory for your schema.
